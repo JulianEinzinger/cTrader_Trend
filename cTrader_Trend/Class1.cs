@@ -17,10 +17,10 @@ namespace TestBot {
         [Parameter("Trading Volume", DefaultValue = 10000, Group = "Trading")]
         public int _volume { get; set; }
 
-        [Parameter("Take Profit", DefaultValue = 2, Group = "Trading")]
+        [Parameter("Take Profit", DefaultValue = 0, Group = "Trading")]
         public int _takeProfit { get; set; }
 
-        [Parameter("Stop Loss", DefaultValue = -2, Group = "Trading")]
+        [Parameter("Stop Loss", DefaultValue = 0, Group = "Trading")]
         public int _stopLoss { get; set; }
 
         #endregion
@@ -40,19 +40,57 @@ namespace TestBot {
         #region methods
 
         private void Short() {
-            ExecuteMarketOrder(TradeType.Sell, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
+            var result = ExecuteMarketOrder(TradeType.Sell, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
+
+            if (!result.IsSuccessful) {
+                Print("ERROR: calling from Short() | Order placement failed: " + result.Error);
+            }
         }
 
         private void Long() {
-            ExecuteMarketOrder(TradeType.Buy, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
+            var result = ExecuteMarketOrder(TradeType.Buy, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
+
+            if (!result.IsSuccessful) {
+                Print("ERROR: calling from Short() | Order placement failed: " + result.Error);
+            }
         }
 
-        private void CheckLong() {
-            throw new NotImplementedException();
+        private bool CheckLong() {
+            // Bedingungen für Kaufsignal
+            if (_shortMA.Result.LastValue > _longMA.Result.LastValue) {
+                Print("calling from CheckLong event handler: Possible Long signal detected!");
+
+                // Schließe Short-Position (falls vorhanden)
+                if (_currentPosition != null) {
+                    if (_currentPosition.TradeType == TradeType.Sell && _currentPosition.NetProfit > 0) {
+                        // Aktuelle Position ist Short
+                        ClosePosition(_currentPosition);
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private void CheckShort() {
-            throw new NotImplementedException();
+        private bool CheckShort() {
+            // Bedingungen für Verkaufsignal
+            if (_shortMA.Result.LastValue < _longMA.Result.LastValue) {
+                Print("calling from CheckShort event handler: Possible Short signal detected!");
+
+                // Schließe Long-Position (falls vorhanden)
+                if (_currentPosition != null) {
+                    if (_currentPosition.TradeType == TradeType.Buy && _currentPosition.NetProfit > 0) {
+                        // Aktuelle Position ist Long
+                        ClosePosition(_currentPosition);
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            }
+            return false;
         }
 
         #endregion
@@ -65,8 +103,8 @@ namespace TestBot {
             _longMA = Indicators.MovingAverage(Bars.ClosePrices, _longPeriod, MovingAverageType.Exponential);
 
             // StopLoss / TakeProfit Berechnung
-            _slPips = Tools.CalculateRelativePriceInPips(this, _stopLoss);
-            _tpPips = Tools.CalculateRelativePriceInPips(this, _takeProfit);
+            _slPips = Tools.CalculateRelativePriceInPips(this, _stopLoss) / 1000000000;
+            _tpPips = Tools.CalculateRelativePriceInPips(this, _takeProfit) / 1000000000;
         }
 
         protected override void OnStop() {
@@ -81,10 +119,10 @@ namespace TestBot {
             _currentPosition = Positions.Find(ORDER_ID, SymbolName);
 
             // Check for long opportunity
-            CheckLong();
+            if (CheckLong()) Long();
 
             // Check for short opportunity
-            CheckShort();
+            if (CheckShort()) Short();
 
         }
 

@@ -1,0 +1,13 @@
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\bin\Debug\net6.0\cTrader_Trend.deps.json
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\bin\Debug\net6.0\cTrader_Trend.dll
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\bin\Debug\net6.0\cTrader_Trend.pdb
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.csproj.AssemblyReference.cache
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.AssemblyInfoInputs.cache
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.AssemblyInfo.cs
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.csproj.CoreCompileInputs.cache
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.sourcelink.json
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.dll
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\refint\cTrader_Trend.dll
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\cTrader_Trend.pdb
+C:\Users\julia\Desktop\Coding\Projekte\Privat\cAlgo\cTrader_Trend\cTrader_Trend\obj\Debug\net6.0\ref\cTrader_Trend.dll

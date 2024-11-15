@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cTrader_Trend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d77b0bd992318b406b40def78afa8636bcf81e3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c77820f01ac0b9095a71b551bd78e1c9500b540d")]
 [assembly: System.Reflection.AssemblyProductAttribute("cTrader_Trend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cTrader_Trend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
