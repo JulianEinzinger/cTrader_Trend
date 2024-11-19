@@ -83,11 +83,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julia\\Desktop\\Coding\\Projekte\\Privat\\cAlgo\\cTrader_Trend\\cTrader_Trend\\cTrader_Trend.csproj",
+      "projectUniqueName": "C:\\Users\\julia\\Documents\\cAlgo\\Sources\\Robots\\cTrader_Trend\\cTrader_Trend\\cTrader_Trend.csproj",
       "projectName": "cTrader_Trend",
-      "projectPath": "C:\\Users\\julia\\Desktop\\Coding\\Projekte\\Privat\\cAlgo\\cTrader_Trend\\cTrader_Trend\\cTrader_Trend.csproj",
+      "projectPath": "C:\\Users\\julia\\Documents\\cAlgo\\Sources\\Robots\\cTrader_Trend\\cTrader_Trend\\cTrader_Trend.csproj",
       "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julia\\Desktop\\Coding\\Projekte\\Privat\\cAlgo\\cTrader_Trend\\cTrader_Trend\\obj\\",
+      "outputPath": "C:\\Users\\julia\\Documents\\cAlgo\\Sources\\Robots\\cTrader_Trend\\cTrader_Trend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

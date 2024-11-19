@@ -25,8 +25,8 @@
         "DefaultValue": 9,
         "ParameterType": "Integer",
         "PropertyName": "_shortPeriod",
-        "FriendlyName": "[BB] Short Period",
-        "GroupName": "Bollinger Bands"
+        "FriendlyName": "[MA] Short Period",
+        "GroupName": "Moving Averages"
       },
       {
         "MinValue": -2147483648,
@@ -35,8 +35,8 @@
         "DefaultValue": 21,
         "ParameterType": "Integer",
         "PropertyName": "_longPeriod",
-        "FriendlyName": "[BB] Long Period",
-        "GroupName": "Bollinger Bands"
+        "FriendlyName": "[MA] Long Period",
+        "GroupName": "Moving Averages"
       },
       {
         "MinValue": -2147483648,
@@ -55,7 +55,7 @@
         "DefaultValue": 0,
         "ParameterType": "Integer",
         "PropertyName": "_takeProfit",
-        "FriendlyName": "Take Profit",
+        "FriendlyName": "Take Profit EUR",
         "GroupName": "Trading"
       },
       {
@@ -65,7 +65,7 @@
         "DefaultValue": 0,
         "ParameterType": "Integer",
         "PropertyName": "_stopLoss",
-        "FriendlyName": "Stop Loss",
+        "FriendlyName": "Stop Loss EUR",
         "GroupName": "Trading"
       }
     ],

@@ -7,20 +7,20 @@ namespace TestBot {
     public class Class1 : Robot {
         #region parameter
 
-        [Parameter("[BB] Short Period", DefaultValue = 9, Group = "Bollinger Bands")]
+        [Parameter("[MA] Short Period", DefaultValue = 9, Group = "Moving Averages")]
         public int _shortPeriod { get; set; }
 
-        [Parameter("[BB] Long Period", DefaultValue = 21, Group = "Bollinger Bands")]
+        [Parameter("[MA] Long Period", DefaultValue = 21, Group = "Moving Averages")]
         public int _longPeriod { get; set; }
 
         // Tradingvolume 100.000 = 1 Lot
         [Parameter("Trading Volume", DefaultValue = 10000, Group = "Trading")]
         public int _volume { get; set; }
 
-        [Parameter("Take Profit", DefaultValue = 0, Group = "Trading")]
+        [Parameter("Take Profit EUR", DefaultValue = 0, Group = "Trading")]
         public int _takeProfit { get; set; }
 
-        [Parameter("Stop Loss", DefaultValue = 0, Group = "Trading")]
+        [Parameter("Stop Loss EUR", DefaultValue = 0, Group = "Trading")]
         public int _stopLoss { get; set; }
 
         #endregion
@@ -101,6 +101,12 @@ namespace TestBot {
             // Initialiserung der Indikatoren
             _shortMA = Indicators.MovingAverage(Bars.ClosePrices, _shortPeriod, MovingAverageType.Exponential);
             _longMA = Indicators.MovingAverage(Bars.ClosePrices, _longPeriod, MovingAverageType.Exponential);
+
+            // Calculate TP / SL EUR input to useful data
+            _takeProfit *= 10000;
+            _takeProfit /= _volume;
+            _stopLoss *= 10000;
+            _stopLoss /= _volume;
 
             // StopLoss / TakeProfit Berechnung
             _slPips = Tools.CalculateRelativePriceInPips(this, _stopLoss) / 1000000000;
