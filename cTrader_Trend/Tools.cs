@@ -15,5 +15,27 @@ namespace TestBot {
 
             return pips;
         }
+
+        // Market Orders
+
+        public static bool Long(Robot instance, double volume, string orderID, double slPips, double tpPips) {
+            var result = instance.ExecuteMarketOrder(TradeType.Buy, instance.SymbolName, volume, orderID, slPips, tpPips);
+
+            if (!result.IsSuccessful) {
+                instance.Print("ERROR: calling from Long() | Order placement failed: " + result.Error);
+            }
+
+            return result.IsSuccessful;
+        }
+
+        public static bool Short(Robot instance, double volume, string orderID, double slPips, double tpPips) {
+            var result = instance.ExecuteMarketOrder(TradeType.Sell, instance.SymbolName, volume, orderID, slPips, tpPips);
+
+            if (!result.IsSuccessful) {
+                instance.Print("ERROR: calling from Short() | Order placement failed: " + result.Error);
+            }
+
+            return result.IsSuccessful;
+        }
     }
 }

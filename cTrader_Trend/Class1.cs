@@ -3,7 +3,7 @@ using cAlgo.API.Indicators;
 using System;
 
 namespace TestBot {
-    [Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    //[Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class Class1 : Robot {
         #region parameter
 
@@ -38,22 +38,6 @@ namespace TestBot {
         #endregion
 
         #region methods
-
-        private void Short() {
-            var result = ExecuteMarketOrder(TradeType.Sell, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
-
-            if (!result.IsSuccessful) {
-                Print("ERROR: calling from Short() | Order placement failed: " + result.Error);
-            }
-        }
-
-        private void Long() {
-            var result = ExecuteMarketOrder(TradeType.Buy, SymbolName, _volume, ORDER_ID, _slPips, _tpPips);
-
-            if (!result.IsSuccessful) {
-                Print("ERROR: calling from Short() | Order placement failed: " + result.Error);
-            }
-        }
 
         private bool CheckLong() {
             // Bedingungen für Kaufsignal
@@ -125,10 +109,10 @@ namespace TestBot {
             _currentPosition = Positions.Find(ORDER_ID, SymbolName);
 
             // Check for long opportunity
-            if (CheckLong()) Long();
+            if (CheckLong()) Tools.Long(this, _volume, ORDER_ID, _slPips, _tpPips);
 
             // Check for short opportunity
-            if (CheckShort()) Short();
+            if (CheckShort()) Tools.Short(this, _volume, ORDER_ID, _slPips, _tpPips);
 
         }
 
