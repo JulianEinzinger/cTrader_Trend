@@ -4,14 +4,14 @@ Trend cBot for cTrader
 This version of TrendBot trades as following:
 
 Open Conditions:
-	- Checks every tick for a cross between two Moving Averages (9 & 21)
-	- 2 Candles later, it checks if there has actually been a cross - if yes, open trade!
+	- Checks every new candle for a cross between two Moving Averages(9 & 21) at the newst finished candle 
+	- If there is a cross, open trade!
 
 Close Conditions:
 	- 
 
 
-Updated 2024/11/21 18:07
+Updated 2024/11/21 19:43
 by Julian Einzinger
 
-v0.1
+v0.2
