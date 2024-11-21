@@ -52,6 +52,8 @@ namespace cTrader_Trend {
         private double _slPips;
         private double _tpPips;
 
+        private bool wasShortAboveBefore;
+
         #endregion
 
         #region events
@@ -120,25 +122,39 @@ namespace cTrader_Trend {
             previousShort = _shortMA.Result.LastValue;
 
             // Vergleichen der Linien für Open
-            if (wasShortAbove != isShortAbove) {
+            if (!waitingForMACrossValidation && wasShortAbove != isShortAbove) {
                 // möglicher Schnittpunkt (aktuell)
                 waitingForMACrossValidation = true;
                 _lastCrossIndex = lastBarIndex;
+
+                wasShortAboveBefore = isShortAbove;
 
                 // Checken, ob Long oder Short Signal und ob Position offen
                 if (_currentPosition == null) {
                     if (isShortAbove) {
                         // potentielles LONG
-                        Tools.Long(this, _volume, ORDER_ID, _slPips, _tpPips);
+                        //Tools.Long(this, _volume, ORDER_ID, _slPips, _tpPips);
                     } else {
                         // potentielles SHORT
-                        Tools.Short(this, _volume, ORDER_ID, _slPips, _tpPips);
+                        //Tools.Short(this, _volume, ORDER_ID, _slPips, _tpPips);
                     }
                 }
             }
 
+            if(waitingForMACrossValidation && lastBarIndex == _lastCrossIndex + 1) {
+                //Long
+                if(wasShortAboveBefore != isShortAbove) {
+                    // Schnitt
+                    if (isShortAbove) {
+                        Tools.Short(this, _volume, ORDER_ID, _slPips, _tpPips);
+                    } else {
+                        Tools.Long(this, _volume, ORDER_ID, _slPips, _tpPips);
+                    }
+                }
+                waitingForMACrossValidation = false;
+            }
 
-            if (waitingForMACrossValidation && lastBarIndex == _lastCrossIndex + 2) {
+            /*if (false && waitingForMACrossValidation && lastBarIndex == _lastCrossIndex + 2) {
                 // Long Bedingungen checken
                 if(_currentPosition?.TradeType == TradeType.Buy && _shortMA.Result.LastValue < _longMA.Result.LastValue) {
                     ClosePosition(_currentPosition);
@@ -149,7 +165,7 @@ namespace cTrader_Trend {
                 }
 
                 waitingForMACrossValidation = false;
-            }
+            }*/
 
 
             #endregion
