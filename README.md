@@ -11,7 +11,18 @@ Close Conditions:
 	- 
 
 
-Updated 2024/11/21 18:07
+Parameters:
+
+MAShort: 9
+MALong: 21
+
+Trading Volume: 10000
+TP: 50 
+SL: -10 
+
+Best result: +44% (21.11.2023 - 21.11.2024)
+
+Updated 2024/11/22 17:53
 by Julian Einzinger
 
-v0.1
+v0.1.1
